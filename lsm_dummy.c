@@ -9,7 +9,7 @@ MODULE_DESCRIPTION("Dummy LSM module");
 static int dummy_path_mkdir(struct path *dir, struct dentry *dentry,
 			       umode_t mode)
 {
-	printk(KERN_DEBUG "path: %s\n", dir->dentry->d_iname);
+	printk(KERN_DEBUG "mkdir: %s/%s\n", dir->dentry->d_iname, dentry->d_iname);
 	return 0;
 }
 
