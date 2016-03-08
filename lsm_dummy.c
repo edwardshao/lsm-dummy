@@ -1,4 +1,5 @@
 #include <linux/lsm_hooks.h>
+#include <linux/init.h>
 #include <linux/module.h>
 #include <linux/fs.h>
 
@@ -17,7 +18,7 @@ static struct security_hook_list dummy_hooks[] = {
 	LSM_HOOK_INIT(path_mkdir, dummy_path_mkdir),
 };
 
-static int lsm_dummy_init(void)
+static int __init lsm_dummy_init(void)
 {
 	printk(KERN_DEBUG "dummy lsm init\n");
 	security_add_hooks(dummy_hooks, ARRAY_SIZE(dummy_hooks));
@@ -25,7 +26,7 @@ static int lsm_dummy_init(void)
 	return 0;
 }
 
-static void lsm_dummy_exit(void)
+static void __exit lsm_dummy_exit(void)
 {
 	security_delete_hooks(dummy_hooks, ARRAY_SIZE(dummy_hooks));
 	printk(KERN_DEBUG "dummy lsm exit\n");
