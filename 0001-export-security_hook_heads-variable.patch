@@ -1,0 +1,21 @@
+From f540aac56c0d95f04b4ccc1ac93087e5e3d10b5a Mon Sep 17 00:00:00 2001
+From: Edward Shao <laface.tw@gmail.com>
+Date: Tue, 8 Mar 2016 15:25:02 +0800
+Subject: [PATCH] export security_hook_heads variable
+
+---
+ security/security.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/security/security.c b/security/security.c
+index e8ffd92..978a46d 100644
+--- a/security/security.c
++++ b/security/security.c
+@@ -1891,3 +1891,4 @@ struct security_hook_heads security_hook_heads = {
+ 		LIST_HEAD_INIT(security_hook_heads.audit_rule_free),
+ #endif /* CONFIG_AUDIT */
+ };
++EXPORT_SYMBOL(security_hook_heads);
+-- 
+2.5.0
+
